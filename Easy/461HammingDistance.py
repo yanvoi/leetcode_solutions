@@ -4,10 +4,8 @@ class Solution:
         answer = 0
         
         while x or y:
-            first = x & 1
-            second = y & 1
             
-            if first != second:
+            if x & 1 != y & 1:
                 answer += 1
                 
             x = x>>1
