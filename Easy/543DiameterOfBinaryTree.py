@@ -12,12 +12,12 @@ class Solution:
         def get_path(node):
             
             if not node:
-                return -1
+                return 0
             
             left = get_path(node.left)
             right = get_path(node.right)
             
-            answer[0] = max(answer[0], left + right + 2)
+            answer[0] = max(answer[0], left + right)
             
             return max(left, right) + 1
         
