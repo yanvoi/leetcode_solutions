@@ -20,27 +20,23 @@ class Solution:
                 bigger.append(node)
             node = node.next
             
-        if len(smaller) == 0:
-            return head
-                
-        for i in range(len(smaller) -1):
+        for i in range(len(smaller)):
             node = smaller[i]
-            node.next = smaller[i+1]
+            node.next = smaller[i+1] if i+1 < len(smaller) else None
             
-        if len(bigger) == 0:
-            return smaller[0]
-        
-        if len(smaller) < 2:
-            node = smaller[0]
-            node.next = bigger[0]
-        else:
-            node = node.next
-            node.next = bigger[0]
-        
-        for i in range(len(bigger) - 1):
+        for i in range(len(bigger)):
             node = bigger[i]
-            node.next = bigger[i+1]
-        node = node.next
-        node.next = None
-        return smaller[0]
+            node.next = bigger[i+1] if i+1 < len(bigger) else None
+            
+        dummy = ListNode(0)
+        
+        if len(smaller) == 0:
+            dummy.next = bigger[0]
+        elif len(bigger) == 0:
+            dummy.next = smaller[0]
+        else:
+            dummy.next = smaller[0]
+            smaller[-1].next = bigger[0]
+        
+        return dummy.next
         
