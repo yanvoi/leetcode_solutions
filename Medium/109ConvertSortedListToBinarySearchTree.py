@@ -30,9 +30,6 @@ class Solution:
             return root
         
         # main part of the program
-        if not head:
-            return head
-        
         arr = []
         while head:
             arr.append(head.val)
