@@ -13,3 +13,25 @@ class Solution:
             
         return len(nums)+1
         
+
+# alternative solution where we use constant extra space but is slower (although with the same time complexity)
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        
+        nums.append(0)
+        leng = len(nums)
+        
+        for i in range(leng):
+            if nums[i] < 0 or nums[i] >= leng:
+                nums[i] = 0
+                
+        for i in range(leng):
+            nums[nums[i]%leng] += leng
+            
+        for i in range(1, leng):
+            if nums[i] < leng:
+                return i
+            
+        return leng
+        
+      
