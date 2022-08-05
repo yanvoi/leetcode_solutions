@@ -15,7 +15,7 @@ class Solution:
         
 
 # alternative solution where we use constant extra space but is slower (although with the same time complexity)
-class Solution:
+class SecondSolution:
     def firstMissingPositive(self, nums: List[int]) -> int:
         
         nums.append(0)
