@@ -12,31 +12,15 @@
 class Solution:
     def isSubPath(self, head: Optional[ListNode], root: Optional[TreeNode]) -> bool:
         
-        def find_heads(tree_node, list_node, arr):
-            if tree_node:
-                find_heads(tree_node.left, list_node, arr)
-                if tree_node.val == list_node.val:
-                    arr.append(tree_node)
-                find_heads(tree_node.right, list_node, arr)
-                
-                
-        def list_in_tree(tree_node, head):
+        def dfs(head, root):
             
-            if not head:
-                return True
+            if not head: return True
+            if not root: return False
             
-            if not tree_node:
-                return False
-            
-            return tree_node.val == head.val and (list_in_tree(tree_node.left, head.next) or list_in_tree(tree_node.right, head.next))
+            return root.val == head.val and (dfs(head.next, root.left) or dfs(head.next, root.right))
         
-        nodes = []
-        find_heads(root, head, nodes)
+        if not head: return True
+        if not root: return False
         
-        for node in nodes:
-            
-            if list_in_tree(node, head):
-                return True
-            
-        return False
+        return dfs(head, root) or self.isSubPath(head, root.left) or self.isSubPath(head, root.right)
         
