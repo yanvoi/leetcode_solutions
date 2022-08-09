@@ -25,7 +25,7 @@ class Solution:
             if not head:
                 return True
             
-            if not tree_node and head:
+            if not tree_node:
                 return False
             
             return tree_node.val == head.val and (list_in_tree(tree_node.left, head.next) or list_in_tree(tree_node.right, head.next))
