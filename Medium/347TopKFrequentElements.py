@@ -1,19 +1,17 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        
+        # creating a dictionary of how many times each number appears in the array
         h = dict()
         for num in nums:
-            if num in h:
-                h[num] += 1
-            else:
-                h[num] = 1
+            h[num] = h.get(num, 0) + 1
                 
+        # creating a dictionary of which elements appeared x times
         freq = dict()
         for el in h:
-            if h[el] in freq:
-                freq[h[el]].append(el)
-            else:
-                freq[h[el]] = [el]
+            freq[h[el]] = freq.get(h[el], []) + [el]
                 
+        # checking from the biggest possible frequency to the lowest
         ans = []
         for i in range(len(nums), 0, -1):
             if i in freq:
