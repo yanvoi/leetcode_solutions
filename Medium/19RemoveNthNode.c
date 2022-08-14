@@ -15,16 +15,14 @@ struct ListNode* removeNthFromEnd(struct ListNode* head, int n){
         i++;
         x = x->next;
     }
+    if(i == 0)
     {
-        if(i == 0)
-        {
-            return NULL;
-        }
-        else if(i == 1 && n == 1)
-        {
-            head = NULL;
-            return head;
-        }
+        return NULL;
+    }
+    else if(i == 1 && n == 1)
+    {
+        head = NULL;
+        return head;
     }
     x = head;
     int how_much = i - n;
