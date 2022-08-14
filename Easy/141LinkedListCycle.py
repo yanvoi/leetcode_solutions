@@ -12,8 +12,8 @@ class Solution:
         while head:
             if head in all_the_nodes:
                 return True
-            else:
-                all_the_nodes.add(head)
+            
+            all_the_nodes.add(head)
             head = head.next
             
         return False
