@@ -1,8 +1,6 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         
-        ans = []
-        
         def backtracking(path, left, right, ans):
             
             if len(path) == 2 * n:
@@ -19,5 +17,7 @@ class Solution:
                 backtracking(path, left, right+1, ans)
                 path.pop()
     
+        ans = []
         backtracking([], 0, 0, ans)
         return ans
+    
