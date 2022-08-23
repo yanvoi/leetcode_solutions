@@ -9,8 +9,8 @@ class Solution:
                 return
             
             num = numbers[0]
-            for dig in mapping[num]:
-                backtrack(numbers[1:], comb + dig, ans)
+            for letter in mapping[num]:
+                backtrack(numbers[1:], comb + letter, ans)
                 
                 
         if len(digits) == 0: return []
