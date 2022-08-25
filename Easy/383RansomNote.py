@@ -7,11 +7,10 @@ class Solution:
             
         needed = dict()
         for char in ransomNote:
-            if char not in available: return False
             needed[char] = needed.get(char, 0) + 1
         
         for char in needed:
-            if needed[char] > available[char]: return False
+            if char not in available or needed[char] > available[char]: return False
         
         return True
         
