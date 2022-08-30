@@ -1,8 +1,8 @@
 class Solution:
     def isValid(self, s: str) -> bool:
         
-        available_chars = '(){}[]'
-        opening = '({['
+        available_chars = set('(){}[]')
+        opening = set('({[')
         
         stack = []
         
