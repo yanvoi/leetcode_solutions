@@ -4,9 +4,12 @@ class Solution:
         if not nums: return
         pivot = random.choice(nums)
         
-        greater = [num for num in nums if num > pivot]
-        equal = [num for num in nums if num == pivot]
-        lesser = [num for num in nums if num < pivot]
+        greater, equal, lesser = [], [], []
+        
+        for num in nums:
+            if num > pivot: greater.append(num)
+            elif num == pivot: equal.append(num)
+            else: lesser.append(num)
         
         greaterLen = len(greater)
         equalLen = len(equal)
