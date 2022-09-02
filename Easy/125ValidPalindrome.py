@@ -3,8 +3,12 @@ class Solution:
         
         s = (''.join(char for char in s if char.isalnum())).lower()
         
-        if s == s[::-1]:
-            return True
+        i, j = 0, len(s) - 1
         
-        return False
+        while i < j:
+            if s[i] != s[j]: return False
+            i += 1
+            j -= 1
+        
+        return True
         
