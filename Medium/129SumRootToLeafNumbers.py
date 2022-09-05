@@ -16,6 +16,7 @@ class Solution:
                 path = path + str(node.val)
                 if not node.left and not node.right:
                     self.answer += int(path)
+                    return
                 
                 self.__SumRootToLeaf__(node.left, path)
                 self.__SumRootToLeaf__(node.right, path)
