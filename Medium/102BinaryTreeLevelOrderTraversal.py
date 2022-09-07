@@ -7,19 +7,21 @@
 class Solution:
     def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
         
-        if not root:
-            return []
-        
-        def traversal(node, arr, lvl):
-            if node:
-                if not lvl < len(arr):
-                    arr.append([])
+        queue = collections.deque()
+        if root: queue.append(root)
+        ret = []
+            
+        while queue:
+            
+            size, row = len(queue), []
+            for _ in range(size):
+                node = queue.popleft()
+                if node.left: queue.append(node.left)
+                if node.right: queue.append(node.right)
                     
-                arr[lvl].append(node.val)
-                traversal(node.left, arr, lvl+1)
-                traversal(node.right, arr, lvl+1)
+                row.append(node.val)
+                
+            ret.append(row)
+            
+        return ret
         
-        answer = [[]]
-        traversal(root, answer, 0)
-        
-        return answer
