@@ -7,20 +7,11 @@
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
         
-        def traversal(node, answer_list):
-            if node.left:
-                traversal(node.left, answer_list)
+        def traverse(node):
+            if node:
+                yield from traverse(node.left)
+                yield node.val
+                yield from traverse(node.right)
                 
-            answer_list.append(node.val)
-            
-            if node.right:
-                traversal(node.right, answer_list)
-        
-        if not root:
-            return []
-                
-        answer = []
-        traversal(root, answer)
-        
-        return answer
+        return list(traverse(root))
         
