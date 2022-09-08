@@ -4,7 +4,7 @@ class Solution:
             return nums.index(target) if target in nums else -1
         
         # find the smallest element and adjust the left and right pointers accordingly
-        # first if statement checks if the array is sorted, if it is, we do simple binary search
+        # first if statement checks whether the array is sorted, if it is, we do simple binary search
         n = len(nums)
         if nums[0] < nums[-1]:
             left, right = 0, n - 1
@@ -24,7 +24,7 @@ class Solution:
             if target > nums[-1]:
                 left, right = 0, mid - 1
             else:
-                left, right = mid, n -1
+                left, right = mid, n - 1
                 
         # now that we know in which sorted part of the array
         # we need to look for the target element
