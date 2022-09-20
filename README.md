@@ -1,4 +1,4 @@
-# my_leetcode
+# My LeetCode solutions
 
 This repository exists to keep me motivated with my daily LeetCode
 
