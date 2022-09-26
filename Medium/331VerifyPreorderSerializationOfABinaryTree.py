@@ -16,8 +16,8 @@ class Solution:
                 
         
         self.index = 0
-        preorder = preorder.split(',')
-        deserialize(preorder)
+        p = preorder.split(',')
+        deserialize(p)
         
-        return self.index == len(preorder)
+        return self.index == len(p)
         
