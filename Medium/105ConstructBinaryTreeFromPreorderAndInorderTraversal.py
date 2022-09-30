@@ -7,25 +7,25 @@
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         
-        def to_tree(left, right):
-            nonlocal preorderIndex
-            
-            if left > right: return None
-            
-            root_value = preorder[preorderIndex]
-            root = TreeNode(root_value)
-            preorderIndex += 1
+        self.preorder = preorder
+        self.pre_index = 0
         
-            root.left = to_tree(left, get_index[root_value]-1)
-            root.right = to_tree(get_index[root_value]+1, right)
+        self.index = dict()
+        for i in range(len(inorder)):
+            self.index[inorder[i]] = i
             
-            return root
+        return self.__build_tree__(0, len(inorder) - 1)
+    
+    
+    def __build_tree__(self, start, end):
         
+        if start > end: return None
         
-        get_index = dict()
-        for index, num in enumerate(inorder):
-            get_index[num] = index
-            
-        preorderIndex = 0
+        root = TreeNode(self.preorder[self.pre_index])
+        self.pre_index += 1
         
-        return to_tree(0, len(preorder) - 1)
+        root.left = self.__build_tree__(start, self.index[root.val] - 1)
+        root.right = self.__build_tree__(self.index[root.val] + 1, end)
+        
+        return root
+        
