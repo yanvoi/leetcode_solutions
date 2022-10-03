@@ -5,14 +5,14 @@ class TrieNode:
         self.char = char
         self.children = dict()
         self.is_end = False
-        self.prefix_num = 0
+        self.num_of_words_downward = 0
         self.parent = parent
         
         
     def prune(self, node):
         
-        while node and node.parent:
-            node.prefix_num -= 1
+        while node:
+            node.num_of_words_downward -= 1
             node = node.parent
 
 
@@ -35,7 +35,7 @@ class Trie:
                 node.children[char] = new_node
                 
             node = node.children[char]
-            node.prefix_num += 1
+            node.num_of_words_downward += 1
             
         node.is_end = True
 
@@ -67,7 +67,7 @@ class Solution:
             return
             
         tmp = board[i][j]
-        if tmp not in node.children or node.children[tmp].prefix_num == 0:
+        if tmp not in node.children or node.children[tmp].num_of_words_downward == 0:
             return
         
         board[i][j] = '#'
