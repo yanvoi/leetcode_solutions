@@ -10,7 +10,7 @@ class Solution:
         # edge cases where input is invalid
         if not root or depth <= 0: return None
         
-        # edge case where we have to insert the new node at the root of the tree
+        # edge case where we have to insert the new node as the root of the tree
         if depth == 1: return TreeNode(val, root, None)
         
         # all other cases where we either insert the nodes or go further down the tree
