@@ -1,8 +1,9 @@
+# sometimes it's gonna be TLE
+
 class TrieNode:
     
     def __init__(self, char=''):
         
-        self.char = char
         self.children = dict()
         self.is_word = False
 
@@ -18,7 +19,7 @@ class Trie:
         
         for char in word:
             if char not in node.children:
-                node.children[char] = TrieNode(char)
+                node.children[char] = TrieNode()
             
             node = node.children[char]
             
@@ -41,8 +42,7 @@ class Trie:
                 
             node = node.children[word[i]]
         
-        if node.is_word: return True
-        return False
+        return node.is_word
 
 
 class WordDictionary:
