@@ -49,14 +49,17 @@ class WordDictionary:
 
     def __init__(self):
         self.trie = Trie()
+        self.longest = 0
 
     def addWord(self, word: str) -> None:
         self.trie.add(word)
+        self.longest = max(self.longest, len(word))
 
     def search(self, word: str) -> bool:
+        if len(word) > self.longest: return False
         return self.trie.search(word, 0)
 
-
+    
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
 # obj.addWord(word)
