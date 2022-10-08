@@ -1,5 +1,3 @@
-# sometimes it's gonna be TLE
-
 class TrieNode:
     
     def __init__(self, char=''):
