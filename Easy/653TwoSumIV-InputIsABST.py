@@ -7,24 +7,19 @@
 class Solution:
     def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
         
-        def traverse(node, dic):
-            if node:
-                if node.val in dic:
-                    dic[node.val] += 1
-                else:
-                    dic[node.val] = 1
-                traverse(node.left, dic)
-                traverse(node.right, dic)
+        self.exists = False
+        self.needed = set()
+        self.__traverse__(root, k)
+        return self.exists
+    
+    def __traverse__(self, node, k):
+        if self.exists or not node: return
         
-        h = dict()
-        traverse(root, h)
+        if k - node.val in self.needed:
+            self.exists = True
+            return
         
-        for el in h:
-            if el == k // 2:
-                if h[el] > 1:
-                    return True
-            elif k - el in h.keys():
-                return True
-
-        return False
-            
+        self.needed.add(node.val)
+        self.__traverse__(node.left, k)
+        self.__traverse__(node.right, k)
+        
