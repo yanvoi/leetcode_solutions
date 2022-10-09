@@ -15,11 +15,11 @@ class Solution:
     def __traverse__(self, node, k):
         if self.exists or not node: return
         
-        if k - node.val in self.needed:
+        if node.val in self.needed:
             self.exists = True
             return
         
-        self.needed.add(node.val)
+        self.needed.add(k - node.val)
         self.__traverse__(node.left, k)
         self.__traverse__(node.right, k)
         
