@@ -12,10 +12,12 @@ class Solution:
         while index < len(traversal):
             lvl, val = 0, ''
             
+            # getting the depth of the next node to append
             while index < len(traversal) and traversal[index] == '-':
                 lvl += 1
                 index += 1
             
+            # getting the value of the next node to append
             while index < len(traversal) and traversal[index] != '-':
                 val += traversal[index]
                 index += 1
