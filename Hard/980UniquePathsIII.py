@@ -10,8 +10,11 @@ class Solution:
         
         for row in range(len(grid)):
             for col in range(len(grid[0])):
+                
+                # the starting square
                 if grid[row][col] == 1:
                     i, j = row, col
+                # empty square
                 elif grid[row][col] == 0:
                     empty += 1
                     
