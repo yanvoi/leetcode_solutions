@@ -18,11 +18,11 @@ class Solution:
                 elif grid[row][col] == 0:
                     empty += 1
                     
-        self.dfs(i, j, empty)
+        self.__dfs__(i, j, empty)
         return self.answer
         
         
-    def dfs(self, i, j, empty):
+    def __dfs__(self, i, j, empty):
         
         # when we go out of bounds of the array or if we meet an obstacle, we have to return
         if i < 0 or j < 0 or i >= len(self.grid) or j >= len(self.grid[0]) or self.grid[i][j] < 0:
@@ -36,10 +36,10 @@ class Solution:
         
         self.grid[i][j] -= 2
         
-        self.dfs(i - 1, j, empty - 1)
-        self.dfs(i + 1, j, empty - 1)
-        self.dfs(i, j - 1, empty - 1)
-        self.dfs(i, j + 1, empty - 1)
+        self.__dfs__(i - 1, j, empty - 1)
+        self.__dfs__(i + 1, j, empty - 1)
+        self.__dfs__(i, j - 1, empty - 1)
+        self.__dfs__(i, j + 1, empty - 1)
         
         self.grid[i][j] = 0
         
