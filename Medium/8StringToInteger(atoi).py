@@ -20,7 +20,7 @@ class Solution:
         # looping through the input and adding next digits to the answer
         # we need to keep in mind to not go out of bounds with our answer
         while i < len(s) and '0' <= s[i] <= '9':
-            if ans > max_int // 10 or (ans == (max_int + 1) // 10 and ord(s[i]) - ord('0') > 7):
+            if ans > max_int // 10 or (ans == max_int // 10 and ord(s[i]) - ord('0') > 7):
                 if sign == 1:
                     return max_int
                 
