@@ -1,12 +1,12 @@
 class Solution:
     def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
-        visited = dict()
         
-        for index, val in enumerate(nums):
-            if val in visited and abs(visited[val] - index) <= k:
+        seen_at = dict()
+        
+        for i in range(len(nums)):
+            if nums[i] in seen_at and i - seen_at[nums[i]] <= k:
                 return True
-            
-            visited[val] = index
+            seen_at[nums[i]] = i
         
         return False
         
