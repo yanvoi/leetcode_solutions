@@ -4,7 +4,7 @@ class Solution:
         self.board = board
         
         # marking all non surrounded regions as 'T'
-        # a non surrounded region connects to an 'O' on a border
+        # a non surrounded region connects or semi connects to an 'O' on a border
         for i in range(len(board)):
             for j in [0, len(board[0]) - 1]:
                 self.__dfs__(i, j)
