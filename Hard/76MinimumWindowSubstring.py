@@ -13,7 +13,7 @@ class Solution:
         for char in t:
             needed[char] = needed.get(char, 0) + 1
         
-        # holds the frequency of letters of the current window
+        # holds the frequency of letters in the current window
         window = dict()
         # 'formed' is gonna count many unique letters we have formed
         # in our current window
@@ -30,7 +30,7 @@ class Solution:
             while left <= right and formed == len(needed):
                 
                 # we only change ans if the current window is shorter
-                # or if the answer doesn't exist yet
+                # or if the answer doesn't yet exist
                 if right - left + 1 < ans[0] or ans[0] == -1:
                     ans = (right - left + 1, left, right)
                     
