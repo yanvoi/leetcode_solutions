@@ -8,15 +8,16 @@ class Solution:
         # ans == (windows size, left pointer, right pointer)
         ans = (-1, 0, 0)
         
-        # 'formed' is gonna count many unique letters we have formed
-        # in our current window
-        left, right, formed = 0, 0, 0
+        left, right = 0, 0
         needed = dict()
         for char in t:
             needed[char] = needed.get(char, 0) + 1
         
         # holds the frequency of letters of the current window
         window = dict()
+        # 'formed' is gonna count many unique letters we have formed
+        # in our current window
+        formed = 0
         
         while right < len(s):
             
