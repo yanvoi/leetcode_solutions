@@ -1,15 +1,15 @@
 class Solution:
     def findErrorNums(self, nums: List[int]) -> List[int]:
         
-        n = len(nums)
-        freq, count, double = dict(), n * (n+1) // 2, 0
+        needed = len(nums) * (len(nums) + 1) // 2
+        seen, repeated = set(), -1
         
         for num in nums:
-            freq[num] = freq.get(num, 0) + 1
-            if freq[num] == 2:
-                double = num
+            if num in seen:
+                repeated = num
             else:
-                count -= num
+                seen.add(num)
+                needed -= num
                 
-        return [double, count]
+        return [repeated, needed]
         
