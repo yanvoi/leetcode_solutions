@@ -1,16 +1,16 @@
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         
-        def backtrack(arr, permutation, ans):
-            
-            if not arr:
-                ans.append(permutation)
-                return
-            
-            for i in range(len(arr)):
-                backtrack(arr[:i] + arr[i+1:], permutation + [arr[i]], ans)
-                
-        ans = []
-        backtrack(nums, [], ans)
-        return ans
+        self.ans = []
+        self.__get_permutations__(nums, [])
+        return self.ans
+    
+    
+    def __get_permutations__(self, arr, curr):
+        if not arr:
+            self.ans.append(curr)
+            return
+        
+        for i in range(len(arr)):
+            self.__get_permutations__(arr[:i] + arr[i+1:], curr + [arr[i]])
         
