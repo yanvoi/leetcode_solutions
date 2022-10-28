@@ -1,22 +1,21 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         
-        def backtrack(arr, path, answer):
-            
-            if len(arr) == 0:
-                answer.append(path)
-                return
-            
-            for i in range(len(arr)):
-                
-                if i > 0 and arr[i] == arr[i-1]:
-                    continue
-                    
-                backtrack(arr[:i] + arr[i+1:], path + [arr[i]], answer)
-            
-        
         nums.sort()
-        ans = []
-        backtrack(nums, [], ans)
-        return ans
+        self.ans = []
+        self.__permute__(nums, [])
+        return self.ans
+    
+    
+    def __permute__(self, nums, curr):
+        
+        if not nums:
+            self.ans.append(curr)
+            return
+        
+        for i in range(len(nums)):
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+                
+            self.__permute__(nums[:i] + nums[i+1:], curr + [nums[i]])
         
