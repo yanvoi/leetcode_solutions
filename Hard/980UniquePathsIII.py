@@ -36,10 +36,10 @@ class Solution:
         
         self.grid[i][j] -= 2
         
-        self.__dfs__(i - 1, j, empty - 1)
-        self.__dfs__(i + 1, j, empty - 1)
-        self.__dfs__(i, j - 1, empty - 1)
-        self.__dfs__(i, j + 1, empty - 1)
+        self.__dfs__(i-1, j, empty-1)
+        self.__dfs__(i+1, j, empty-1)
+        self.__dfs__(i, j-1, empty-1)
+        self.__dfs__(i, j+1, empty-1)
         
-        self.grid[i][j] = 0
+        self.grid[i][j] += 2
         
