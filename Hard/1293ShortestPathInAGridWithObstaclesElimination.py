@@ -19,7 +19,7 @@ class Solution:
         while q:
             row, col, obstacles, steps = q.popleft()
             
-            for i, j in ((row-1, col), (row+1, col), (row, col-1), (row, col+1)):
+            for i, j in [(row-1, col), (row+1, col), (row, col-1), (row, col+1)]:
                 if not 0 <= i < m or not 0 <= j < n:
                     continue
                     
