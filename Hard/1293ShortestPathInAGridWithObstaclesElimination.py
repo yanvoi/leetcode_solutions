@@ -23,14 +23,14 @@ class Solution:
                 if not 0 <= i < m or not 0 <= j < n:
                     continue
                     
+                if i == m - 1 and j == n - 1:
+                    return steps + 1
+                    
                 if grid[i][j] == 1 and obstacles < k and (i, j, obstacles+1) not in visited:
                     visited.add((i, j, obstacles + 1))
                     q.append((i, j, obstacles+1, steps+1))
 
                 if grid[i][j] == 0 and (i, j, obstacles) not in visited:
-                    if i == m - 1 and j == n - 1:
-                        return steps + 1
-
                     visited.add((i, j, obstacles))
                     q.append((i, j, obstacles, steps+1))
                     
