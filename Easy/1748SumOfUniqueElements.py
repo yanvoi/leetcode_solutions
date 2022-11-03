@@ -6,8 +6,8 @@ class Solution:
             frequency[num] = frequency.get(num, 0) + 1
             
         answer = 0
-        for num in frequency:
-            if frequency[num] == 1: answer += num
+        for num, val in frequency.items():
+            if val == 1: answer += num
                 
         return answer
         
