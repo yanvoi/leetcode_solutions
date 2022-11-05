@@ -1,9 +1,26 @@
 class Solution:
     def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
         
-        # very simple
-        # very fast
-        # but very long code
+        attackers = {tuple(x) for x in queens}
+        king_r, king_c = king[0], king[1]
+        ans = []
+        
+        for i in (-1, 0, 1):
+            for j in (-1, 0, 1):
+                for k in range(1, 9):
+                    x, y = king_r + i*k, king_c + j*k
+                    if (x, y) in attackers:
+                        ans.append([x, y])
+                        break
+            
+        return ans
+    
+
+# This is the first solution that I came up with
+# The idea is exactly the same, but the code is way longer
+class FirstSolution:
+    def queensAttacktheKing(self, queens: List[List[int]], king: List[int]) -> List[List[int]]:
+        
         attackers = set([tuple(x) for x in queens])
         king_row, king_col = king[0], king[1]
         ans = []
