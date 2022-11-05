@@ -1,8 +1,7 @@
 class TrieNode:
     
-    def __init__(self, char='', parent=None):
+    def __init__(self, parent=None):
         
-        self.char = char
         self.children = dict()
         self.is_end = False
         self.num_of_words_downward = 0
@@ -30,7 +29,7 @@ class Trie:
         for char in word:
             
             if char not in node.children:
-                new_node = TrieNode(char)
+                new_node = TrieNode()
                 new_node.parent = node
                 node.children[char] = new_node
                 
