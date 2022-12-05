@@ -8,12 +8,10 @@ class FindElements:
 
     def __init__(self, root: Optional[TreeNode]):
         
-        self.root = root
-        self.root.val = 0
-        self.available = set()
-        
+        root.val = 0
         q = collections.deque()
-        q.append(self.root)
+        q.append(root)
+        self.available = set()
         
         while q:
             
