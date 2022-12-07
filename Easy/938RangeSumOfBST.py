@@ -9,10 +9,8 @@ class Solution:
 
         if not root:
             return 0
-
-        children = self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
-
+            
         if low <= root.val <= high:
-            return root.val + children
+            return root.val + self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
 
-        return children
+        return self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
