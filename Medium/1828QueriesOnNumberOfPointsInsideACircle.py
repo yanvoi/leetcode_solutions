@@ -4,10 +4,7 @@ class Solution:
         x, y = point
         i, j, r = circle
 
-        if math.dist([x, y], [i, j]) <= r:
-            return True
-
-        return False
+        return math.dist([x, y], [i, j]) <= r
 
     def countPoints(self, points: List[List[int]], queries: List[List[int]]) -> List[int]:
         
