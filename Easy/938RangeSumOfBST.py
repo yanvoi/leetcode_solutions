@@ -6,23 +6,13 @@
 #         self.right = right
 class Solution:
     def rangeSumBST(self, root: Optional[TreeNode], low: int, high: int) -> int:
-        
-        def traverse(node, arr, lower, higher):
-            if node:
-                if node.val < lower:
-                    traverse(node.right, arr, lower, higher)
-                elif node.val > higher:
-                    traverse(node.left, arr, lower, higher)
-                else:
-                    arr.append(node.val)
-                    traverse(node.left, arr, lower, higher)
-                    traverse(node.right, arr, lower, higher)
-        
-        numbers = []
-        traverse(root, numbers, low, high)
-        sum = 0
-        for num in numbers:
-            sum += num
-            
-        return sum
-        
+
+        if not root:
+            return 0
+
+        children = self.rangeSumBST(root.left, low, high) + self.rangeSumBST(root.right, low, high)
+
+        if low <= root.val <= high:
+            return root.val + children
+
+        return children
