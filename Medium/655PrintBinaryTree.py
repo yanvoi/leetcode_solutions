@@ -8,6 +8,7 @@ class Solution:
     def printTree(self, root: Optional[TreeNode]) -> List[List[str]]:
 
         height = self.__get_height__(root)
+        # [(2^height) - 1] because it is the sum of all nodes in a perfect binary tree of height h-1
         self.answer = [['' for _ in range((2 ** height) - 1)] for i in range(height)]
         
         self.__traverse__(root, 0, 0, len(self.answer[0])-1)
