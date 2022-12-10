@@ -4,8 +4,5 @@ class Solution:
         while n > 1:
             n = n / 4
             
-        if n == 1:
-            return True
-        
-        return False
+        return n == 1
         
