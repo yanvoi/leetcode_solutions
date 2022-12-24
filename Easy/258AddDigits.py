@@ -1,22 +1,16 @@
 class Solution:
     def addDigits(self, num: int) -> int:
-        
-        def add_digits(n):
-            
-            sum = 0
-            
-            while n > 0:
-                
-                sum += n % 10
-                n = n // 10
-                
-            return sum
-          
-        # main part
-            
-        while num // 10 > 0:
-            
-            num = add_digits(num)
-            
+
+        while num > 9:
+            num = self.__sum_digits__(num)
+
         return num
-        
+
+
+    def __sum_digits__(self, num):
+        ans = 0
+        while num > 0:
+            ans += num % 10
+            num //= 10
+
+        return ans
