@@ -6,8 +6,7 @@ class Solution:
     def countAnagrams(self, s: str) -> int:
         
         answer = 1
-        words = s.split()
-        for word in words:
+        for word in s.split():
             answer *= self.count_unique_permutations(word)
             
         return answer % (10**9 + 7)
