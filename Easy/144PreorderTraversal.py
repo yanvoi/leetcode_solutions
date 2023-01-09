@@ -6,16 +6,12 @@
 #         self.right = right
 class Solution:
     def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
-        
-        def traverse(node, arr):
-            
-            if node:
-                arr.append(node.val)
-                traverse(node.left, arr)
-                traverse(node.right, arr)
-                
-        answer = []
-        traverse(root, answer)
-        
-        return answer
-        
+
+        return [val for val in self.preorderGenerator(root)]
+
+
+    def preorderGenerator(self, root):
+        if root:
+            yield root.val
+            yield from self.preorderGenerator(root.left)
+            yield from self.preorderGenerator(root.right)
