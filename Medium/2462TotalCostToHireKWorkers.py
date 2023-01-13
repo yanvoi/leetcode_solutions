@@ -11,7 +11,7 @@ class Solution:
         answer = 0
 
         for _ in range(k):
-            if left and left[0] <= right[0]:
+            if left[0] <= right[0]:
                 answer += heapq.heappop(left)
                 if next_left <= next_right:
                     heapq.heappush(left, costs[next_left])
