@@ -24,7 +24,4 @@ class Solution:
             if prefix in self.available and self.dfs(suffix):
                 return True
 
-            if suffix in self.available and self.dfs(prefix):
-                return True
-
         return False
