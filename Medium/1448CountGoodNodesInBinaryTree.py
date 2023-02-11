@@ -11,13 +11,13 @@ class Solution:
         self.__countGoodNodes__(root, root.val)
         return self.answer
         
-    def __countGoodNodes__(self, node, biggest_so_far):
+    def __countGoodNodes__(self, node, greatest_so_far):
             if not node: return
             
-            if node.val >= biggest_so_far:
+            if node.val >= greatest_so_far:
                 self.answer += 1
-                biggest_so_far = node.val
                 
-            self.__countGoodNodes__(node.left, biggest_so_far)
-            self.__countGoodNodes__(node.right, biggest_so_far)
+            # to every node we pass the greatest value among it's predecessors
+            self.__countGoodNodes__(node.left, max(greatest_so_far, node.val))
+            self.__countGoodNodes__(node.right, max(greatest_so_far, node.val))
     
