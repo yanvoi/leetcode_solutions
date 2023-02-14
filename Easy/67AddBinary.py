@@ -1,7 +1,7 @@
 class Solution:
     def addBinary(self, a: str, b: str) -> str:
         
-        answer = ""
+        answer = []
         carry = 0
         
         a = a[::-1]
@@ -12,11 +12,11 @@ class Solution:
             digitA = int(a[i]) if i < len(a) else 0
             digitB = int(b[i]) if i < len(b) else 0
             
-            answer = str((digitA + digitB + carry) % 2) + answer
+            answer.append(str((digitA + digitB + carry) % 2))
             carry = (digitA + digitB + carry) // 2
             
         if carry != 0:
-            answer = str(carry) + answer
+            answer.append(str(carry))
             
-        return answer
+        return ''.join(answer[::-1])
         
