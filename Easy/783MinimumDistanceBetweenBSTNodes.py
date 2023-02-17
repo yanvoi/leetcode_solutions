@@ -7,19 +7,18 @@
 class Solution:
     def minDiffInBST(self, root: Optional[TreeNode]) -> int:
         
-        def traverse(node, pre, cur):
-            if not node: return
+        self.answer, self.smaller = float('inf'), float('-inf')
+        self.dfs(root)
+        return self.answer
 
-            traverse(node.left, pre, cur)
-            
-            cur[0] = min(cur[0], node.val - pre[0])
-            pre[0] = node.val
-            
-            traverse(node.right, pre, cur)
-                
-                
-        pre, cur = [float('-inf')], [float('inf')]
-        traverse(root, pre, cur)
-        
-        return cur[0]
-        
+
+    def dfs(self, root):
+
+        if root.left:
+            self.dfs(root.left)
+
+        self.answer = min(self.answer, root.val - self.smaller)
+        self.smaller = root.val
+
+        if root.right:
+            self.dfs(root.right)
