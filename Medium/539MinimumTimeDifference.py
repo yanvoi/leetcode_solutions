@@ -5,16 +5,19 @@ class Solution:
         # mark all present minutes as True
         time_present = [False] * 24 * 60
         for point in timePoints:
-            time = 60 * int(point[:2]) + int(point[3:])
-            if time_present[time]:
+            minute = 60 * int(point[:2]) + int(point[3:])
+            # if a certain clock time point has already been seen we can return 0
+            if time_present[minute]:
                 return 0
-            time_present[time] = True
+            time_present[minute] = True
 
         # get the minimum difference between any two indices holding True
-        prev, answer, n = float('-inf'), float('inf'), len(time_present)
-        for i in range(n * 2):
-            if time_present[i % n]:
-                answer = min(answer, i - prev)
-                prev = i
+        # loop over the list twice since time is "circular"
+        n = len(time_present)
+        prev_index, answer = float('-inf'), float('inf')
+        for cur_index in range(n * 2):
+            if time_present[cur_index % n]:
+                answer = min(answer, cur_index - prev_index)
+                prev_index = cur_index
 
         return answer
