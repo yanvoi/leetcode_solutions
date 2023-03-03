@@ -1,8 +1,10 @@
-# we can do it this way because the robot only walks on the edges and (width, height >= 2)
+# the idea is based on the fact that the robot only walks on a limited number of cells
+# we can do it this way because it only walks on the edges and (width, height >= 2)
 class Robot:
 
     def __init__(self, width: int, height: int):
         self.position = 0
+        # each list in information consists of [x, y, direction] where x and y are the coordinates
         self.information = [[0, 0, 'South']]
 
         for x in range(1, width):
