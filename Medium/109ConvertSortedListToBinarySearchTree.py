@@ -12,28 +12,23 @@
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
         
-        # converting a sorted list to a BST
-        def to_bst(array):
-            
-            if len(array) == 0:
-                return None
-            
-            if len(array) == 1:
-                return TreeNode(array[0])
-            
-            mid = len(array) // 2
-            root = TreeNode(array[mid])
-            
-            root.left = to_bst(array[:mid])
-            root.right = to_bst(array[mid+1:])
-            
-            return root
-        
-        # main part of the program
-        arr = []
-        while head:
-            arr.append(head.val)
-            head = head.next
-        
-        return to_bst(arr)
+        if not head:
+            return None
+
+        if not head.next:
+            return TreeNode(head.val)
+
+        slow, fast = head, head.next.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+
+        temporary = slow.next
+        slow.next = None
+
+        root = TreeNode(temporary.val)
+        root.left = self.sortedListToBST(head)
+        root.right = self.sortedListToBST(temporary.next)
+
+        return root
         
