@@ -8,20 +8,17 @@ class Solution:
     def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
         
         self.postorder = postorder
-        self.index = dict()
-        for i in range(len(inorder)):
-            self.index[inorder[i]] = i
-            
-        return self.__build_tree__(0, len(inorder) - 1)
-        
-        
-    def __build_tree__(self, start, end):
-        
-        if start > end: return None
-        
+        self.inorder_indexing = {num: index for index, num in enumerate(inorder)}
+        return self._build_tree(0, len(postorder) - 1)
+
+    
+    def _build_tree(self, left_index, right_index):
+        if left_index > right_index:
+            return None
+
         root = TreeNode(self.postorder.pop())
-        root.right = self.__build_tree__(self.index[root.val] + 1, end)
-        root.left = self.__build_tree__(start, self.index[root.val] - 1)
-        
+        root.right = self._build_tree(self.inorder_indexing[root.val] + 1, right_index)
+        root.left = self._build_tree(left_index, self.inorder_indexing[root.val] - 1)
+
         return root
     
