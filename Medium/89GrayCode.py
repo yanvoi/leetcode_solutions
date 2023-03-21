@@ -9,4 +9,4 @@ class Solution:
         if n == 0: return [0]
 
         shorter_code = self.grayCode(n - 1)
-        return shorter_code + [pow(2, n - 1) + num for num in shorter_code[::-1]]
+        return shorter_code + [(1<<(n - 1)) + num for num in shorter_code[::-1]]
