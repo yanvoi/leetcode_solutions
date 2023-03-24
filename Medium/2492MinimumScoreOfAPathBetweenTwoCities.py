@@ -1,23 +1,20 @@
 class Solution:
     def minScore(self, n: int, roads: List[List[int]]) -> int:
 
-        adj = defaultdict(list)
+        adj = defaultdict(dict)
         for a, b, distance in roads:
-            adj[a].append([b, distance])
-            adj[b].append([a, distance])
+            adj[a][b] = adj[b][a] = distance
 
         q = collections.deque([1])
-        answer = float('inf')
         seen = set()
+        answer = float('inf')
 
         while q:
-            size = len(q)
-            for _ in range(size):
-                node = q.popleft()
-                seen.add(node)
-                for neighbor, distance in adj[node]:
-                    answer = min(answer, distance)
-                    if neighbor not in seen:
-                        q.append(neighbor)
+            node = q.popleft()
+            for neighbor, distance in adj[node].items():
+                answer = min(answer, distance)
+                if neighbor not in seen:
+                    q.append(neighbor)
+                    seen.add(neighbor)
 
         return answer
