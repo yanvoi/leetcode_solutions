@@ -7,6 +7,7 @@ class Solution:
         dp = [[0 for _ in range(cols + 1)] for _ in range(rows + 1)]
         longest_side = 0
 
+        # we 'build' bigger squares by first building smaller squares
         for i in range(rows):
             for j in range(cols):
                 if matrix[i][j] == '1':
