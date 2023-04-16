@@ -7,20 +7,13 @@
 class Solution:
     def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         
-        def traversal(node, sum, arr):
-            if node:
-                sum += node.val
-                
-                if not node.left and not node.right:
-                    arr.append(sum)
-                traversal(node.left, sum, arr)
-                traversal(node.right, sum, arr)
+        if not root:
+            return False
+
+        targetSum -= root.val
         
-        different_paths = []
-        
-        traversal(root, 0, different_paths)
-        
-        if targetSum in different_paths:
+        if not root.left and not root.right and not targetSum:
             return True
-        return False
+
+        return self.hasPathSum(root.left, targetSum) or self.hasPathSum(root.right, targetSum)
         
