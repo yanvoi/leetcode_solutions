@@ -1,25 +1,23 @@
 class Solution:
     def predictPartyVictory(self, senate: str) -> str:
 
-        r_stack = [i for i in range(len(senate)) if senate[i] == "R"]
-        d_stack = [i for i in range(len(senate)) if senate[i] == "D"]
+        radiant = set(i for i in range(len(senate)) if senate[i] == "R")
+        dire = set(i for i in range(len(senate)) if senate[i] == "D")
 
-        banned = set()
         i = 0
-        while r_stack and d_stack:
+        while radiant and dire:
             cur = i % len(senate)
             i += 1
-            if cur in banned:
+            if cur not in radiant and cur not in dire:
                 continue
             
-            helper = (cur + 1) % len(senate)
-            while helper in banned or senate[helper] == senate[cur]:
-                helper = (helper + 1) % len(senate)
+            to_ban = (cur + 1) % len(senate)
+            while (to_ban not in radiant and to_ban not in dire) or senate[to_ban] == senate[cur]:
+                to_ban = (to_ban + 1) % len(senate)
 
-            banned.add(helper)
-            if senate[cur] == "R":
-                d_stack.pop(d_stack.index(helper))
+            if to_ban in dire:
+                dire.remove(to_ban)
             else:
-                r_stack.pop(r_stack.index(helper))
+                radiant.remove(to_ban)
 
-        return "Radiant" if r_stack else "Dire"
+        return "Radiant" if radiant else "Dire"
