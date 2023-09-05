@@ -1,4 +1,4 @@
-# O(n + m) time where n == len(nums1) && m == len(nums2), O(1) space
+# O(min(n, m)) time where n == len(nums1) && m == len(nums2), O(1) space
 class Solution:
     def getCommon(self, nums1: List[int], nums2: List[int]) -> int:
         left, right = 0, 0
