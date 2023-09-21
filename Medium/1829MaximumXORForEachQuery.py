@@ -6,4 +6,4 @@ class Solution:
             xor[i] ^= xor[i - 1]
 
         maximum = (2 ** maximumBit) - 1
-        return [maximum ^ xor[-i - 1] for i, num in enumerate(nums)]
+        return [maximum ^ xor[i] for i in range(len(nums) - 1, -1, -1)]
