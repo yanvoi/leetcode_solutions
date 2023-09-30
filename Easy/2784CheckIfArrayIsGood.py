@@ -1,0 +1,4 @@
+class Solution:
+    def isGood(self, nums: List[int]) -> bool:
+        n = len(nums)
+        return Counter(nums) == Counter(list(range(1, n)) + [n - 1])
