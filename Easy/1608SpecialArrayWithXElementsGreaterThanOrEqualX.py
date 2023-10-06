@@ -6,7 +6,7 @@ class Solution:
             mid = (left + right) // 2
             count = sum(num >= mid for num in nums)
             if count == mid: return mid
-            elif count > mid:
+            if count > mid:
                 left = mid + 1
             else:
                 right = mid - 1
