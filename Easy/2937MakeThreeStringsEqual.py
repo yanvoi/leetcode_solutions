@@ -6,4 +6,4 @@ class Solution:
             if c1 == c2 == c3: same_prefix_count += 1
             else: break
 
-        return len(s1) + len(s2) + len(s3) - 3 * same_prefix_count if same_prefix_count >= 1 else -1
+        return len(s1) + len(s2) + len(s3) - 3 * same_prefix_count if same_prefix_count else -1
