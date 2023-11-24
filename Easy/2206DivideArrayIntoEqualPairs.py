@@ -1,5 +1,3 @@
 class Solution:
     def divideArray(self, nums: List[int]) -> bool:
-        nums_set = set()
-        for num in nums: nums_set ^= {num}
-        return not nums_set
+        return all(not count % 2 for count in Counter(nums).values())
