@@ -11,10 +11,7 @@ class Solution:
             elif char == ")":
                 operation = operations.pop()
                 values = bool_expressions.pop()
-                cur_result = None
-                if operation == "&": cur_result = all(values)
-                elif operation == "|": cur_result = any(values)
-                else: cur_result = not values.pop()
+                cur_result = all(values) if operation == "&" else any(values) if operation == "|" else not values.pop()
                 bool_expressions[-1].append(cur_result)
 
         return bool_expressions.pop().pop()
